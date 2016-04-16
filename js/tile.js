@@ -1,4 +1,4 @@
-/*global $, TILE_SIZE, LEFT, RIGHT, UP, DOWN */
+/*global $, TILE_SIZE, LEFT, RIGHT, UP, DOWN, window */
 
 function Tile(x, y) {
 
@@ -112,7 +112,10 @@ function MovingTile(x, y, direction) {
             $e.css({
                 left: this.position.x * TILE_SIZE,
                 top: this.position.y * TILE_SIZE
-            });
+            }).css("opacity", 0.5);
+            window.setTimeout(function () {
+                $e.css("opacity", "");
+            }, 400);
 
             this.level.updateTilePosition(this, prevX, prevY);
 
