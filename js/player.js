@@ -1,10 +1,10 @@
-/*global window, $, HORIZONTAL, VERTICAL, showPopup */
+/*global window, $, HORIZONTAL, VERTICAL, showPopup, TILE_SIZE */
 
 function Player(level, x, y) {
 
     var $e = $("<div/>").addClass("player player-h").css({
-        left: x * 100,
-        top: y * 100
+        left: x * TILE_SIZE,
+        top: y * TILE_SIZE
     });
 
     var prevPos = {
@@ -21,8 +21,8 @@ function Player(level, x, y) {
             return;
         // TODO support for paths > 1
         var $path = $("<div/>").addClass("path").css({
-            left: startX * 100,
-            top: startY * 100
+            left: startX * TILE_SIZE,
+            top: startY * TILE_SIZE
         });
         if (startX !== endX) {
             $path.addClass("path-h");
@@ -82,8 +82,8 @@ function Player(level, x, y) {
             this.position.y = ny;
 
             $e.css({
-                left: nx * 100,
-                top: ny * 100
+                left: nx * TILE_SIZE,
+                top: ny * TILE_SIZE
             });
 
             createPath(prevPos, this.position);

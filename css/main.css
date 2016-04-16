@@ -3,6 +3,8 @@
     font-family: 'Raleway', sans-serif;
 }
 
+
+
 html, body {
     margin: 0;
     padding: 0;
@@ -10,6 +12,9 @@ html, body {
     height: 100%;
 }
 
+body {
+    background: #1A1A1A;
+}
 
 
 
@@ -65,7 +70,6 @@ html, body {
     display: block;
     width: 100%;
     height: 100%;
-    background: #1A1A1A;
 }
 
 
@@ -259,4 +263,44 @@ html, body {
     width: 50%;
     padding: 8px 16px;
     text-align: right;
+}
+
+
+
+
+
+@media (max-width: 900px), (max-height: 920px) {
+    #game {
+        transform: scale(0.9);
+    }
+}
+
+@media (max-width: 760px), (max-height: 840px) {
+    #game {
+        transform: scale(0.8);
+    }
+}
+
+@media (max-width: 660px), (max-height: 760px) {
+    #game {
+        transform: scale(0.7);
+    }
+}
+
+@media (max-width: 580px), (max-height: 680px) {
+    #game {
+        transform: scale(0.6);
+    }
+}
+
+@media (max-width: 500px), (max-height: 600px) {
+    #game {
+        transform: scale(0.5);
+    }
+}
+
+@media (max-width: 440px), (max-height: 540px) {
+    #game {
+        transform: scale(0.4);
+    }
 }

@@ -5,6 +5,8 @@ var HORIZONTAL = true,
 var $game;
 var showPopup;
 
+var TILE_SIZE = 100;
+
 
 
 $(function () {

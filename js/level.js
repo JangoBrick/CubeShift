@@ -1,15 +1,15 @@
-/*global $, $game, Player */
+/*global $, $game, TILE_SIZE, Player */
 
 function Level(w, h, px, py, destx, desty) {
 
     var $e = $("<div/>").addClass("level").css({
-        width: w * 100,
-        height: h * 100
+        width: w * TILE_SIZE,
+        height: h * TILE_SIZE
     });
 
     var $dest = $("<div/>").addClass("destination").css({
-        left: destx * 100,
-        top: desty * 100
+        left: destx * TILE_SIZE,
+        top: desty * TILE_SIZE
     }).appendTo($e);
 
     var level = {

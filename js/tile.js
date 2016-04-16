@@ -1,10 +1,10 @@
-/*global $ */
+/*global $, TILE_SIZE */
 
 function Tile(x, y) {
 
     var $e = $("<div/>").addClass("tile").css({
-        left: x * 100,
-        top: y * 100
+        left: x * TILE_SIZE,
+        top: y * TILE_SIZE
     });
 
     return {
