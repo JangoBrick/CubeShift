@@ -81,6 +81,7 @@ body {
     left: 50%;
     box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5);
     background: #222;
+    background: url('../img/levelbg.jpg');
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
@@ -169,7 +170,7 @@ body {
     width: 80px;
     height: 80px;
     margin: 10px 0 0 10px;
-    background: #333;
+    background: rgba(0, 0, 0, 0.1);
     border: 2px dotted #2AF;
     border-radius: 4px;
     box-shadow: 4px 4px 16px 0 rgba(0, 0, 0, 0.5) inset;
