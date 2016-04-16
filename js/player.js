@@ -1,4 +1,4 @@
-/*global window, $, HORIZONTAL, VERTICAL, showPopup, TILE_SIZE, setLevelScore, currentLevelIndex */
+/*global window, $, HORIZONTAL, VERTICAL, LEFT, RIGHT, UP, DOWN, showPopup, TILE_SIZE, setLevelScore, currentLevelIndex */
 
 function Player(level, x, y) {
 
@@ -7,36 +7,48 @@ function Player(level, x, y) {
         top: y * TILE_SIZE
     });
 
+
+
     var prevPos = {
         x: x,
         y: y
     };
 
+    var $paths = [];
+
     var createPath = function (from, to) {
+
         var startX = Math.min(from.x, to.x),
             endX = Math.max(from.x, to.x);
         var startY = Math.min(from.y, to.y),
             endY = Math.max(from.y, to.y);
+
         if (startX === endX && startY === endY)
             return;
-        // TODO support for paths > 1
+
         var $path = $("<div/>").addClass("path").css({
             left: startX * TILE_SIZE,
             top: startY * TILE_SIZE
         });
+
         if (startX !== endX) {
             $path.addClass("path-h");
         } else {
             $path.addClass("path-v");
         }
+
         $e.parent().append($path.fadeIn(400));
+        $paths.push($path);
+
     };
+
+
 
     return {
 
         position: {
             x: x,
-            y: x
+            y: y
         },
 
         state: HORIZONTAL,
@@ -45,16 +57,32 @@ function Player(level, x, y) {
 
 
 
-        move: function (x, y) {
+        move: function (direction) {
 
             if (this.isFinishing) {
                 return;
             }
 
-            var nx = this.position.x + x,
-                ny = this.position.y + y;
+            var nx = this.position.x,
+                ny = this.position.y;
+            switch (direction) {
+                case LEFT:
+                    nx--;
+                    break;
+                case RIGHT:
+                    nx++;
+                    break;
+                case UP:
+                    ny--;
+                    break;
+                case DOWN:
+                    ny++;
+                    break;
+                default:
+                    return;
+            }
 
-            if (nx < 0 || ny < 0 || nx >= level.width || ny >= level.height) {
+            if (!level.checkBounds(nx, ny)) {
                 return;
             }
 
@@ -63,7 +91,7 @@ function Player(level, x, y) {
                 return;
             }
 
-            if (x !== 0) {
+            if (direction === LEFT || direction === RIGHT) {
                 if (this.state !== HORIZONTAL)
                     return;
                 this.state = VERTICAL;
@@ -96,7 +124,7 @@ function Player(level, x, y) {
                     $e.addClass("player-final");
                     window.setTimeout(function () {
 
-                        var score = 400 / ((level.stats.elapsedTime / 4) * level.stats.moves);
+                        var score = 400 / ((level.stats.elapsedTime / 4) * level.stats.moves) * (1 + currentLevelIndex);
 
                         showPopup("level-done", {
                             time: level.stats.elapsedTime.toFixed(1) + "s",
@@ -122,7 +150,30 @@ function Player(level, x, y) {
         },
 
         remove: function () {
+
             $e.remove();
+
+            var removePath = function () {
+                $(this).remove();
+            };
+            for (var i=0; i<$paths.length; i++) {
+                $paths[i].fadeOut(400, removePath);
+            }
+            $paths = [];
+
+        },
+
+
+
+        die: function () {
+
+            this.isFinishing = true;
+            var _this = this;
+
+            $e.fadeOut(400);
+
+            showPopup("dead", {});
+
         }
 
     };

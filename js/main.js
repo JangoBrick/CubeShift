@@ -1,7 +1,9 @@
-/*global jQuery, $, window, document, console, Level, Player, Tile */
+/*global jQuery, $, window, document, console, Level, Player, Tile, MovingTile */
 
 var HORIZONTAL = true,
     VERTICAL = false;
+var LEFT = 0, RIGHT = 1, UP = 2, DOWN = 3;
+
 var $game;
 var showPopup, hidePopup;
 
@@ -18,8 +20,36 @@ var setLevelScore;
 $(function () {
 
     var levelDefs = [
-        ["........", ".#......", "..@.....", ".....#..", "........", "....#...", "..#...o.", "........"],
-        [".....#.o", "....#...", "......##", "#....#..", "..#.....", "......#.", "......@.", "...#...."]
+        [
+            "........",
+            ".#......",
+            "..@.....",
+            ".....#..",
+            "........",
+            "....#...",
+            "..#...o.",
+            "........"
+        ],
+        [
+            ".....#.o",
+            "....#...",
+            "......##",
+            "#....#..",
+            "..#.....",
+            "......#.",
+            "......@.",
+            "...#...."
+        ],
+        [
+            ".......@",
+            "........",
+            "..<.<...",
+            ".v...^..",
+            "...o....",
+            ".v...^..",
+            "..>.>...",
+            "........"
+        ]
     ];
 
     var scores = [];
@@ -85,13 +115,28 @@ $(function () {
                 var tile = cols.charAt(x);
 
                 if (tile === "#") {
+                    // wall tile
                     tiles.push(Tile(x, y));
                 } else if (tile === "o") {
+                    // destination
                     destX = x;
                     destY = y;
                 } else if (tile === "@") {
+                    // spawn point
                     startX = x;
                     startY = y;
+                } else if (tile === "<") {
+                    // left-moving tile
+                    tiles.push(new MovingTile(x, y, LEFT));
+                } else if (tile === "^") {
+                    // up-moving tile
+                    tiles.push(new MovingTile(x, y, UP));
+                } else if (tile === ">") {
+                    // right-moving tile
+                    tiles.push(new MovingTile(x, y, RIGHT));
+                } else if (tile === "v") {
+                    // down-moving tile
+                    tiles.push(new MovingTile(x, y, DOWN));
                 }
 
             }
@@ -157,16 +202,16 @@ $(function () {
 
         switch(e.which) {
             case 37: // left
-                currentLevel.player.move(-1, 0);
+                currentLevel.player.move(LEFT);
                 break;
             case 38: // up
-                currentLevel.player.move(0, -1);
+                currentLevel.player.move(UP);
                 break;
             case 39: // right
-                currentLevel.player.move(1, 0);
+                currentLevel.player.move(RIGHT);
                 break;
             case 40: // down
-                currentLevel.player.move(0, 1);
+                currentLevel.player.move(DOWN);
                 break;
             default:
                 return;
@@ -179,16 +224,16 @@ $(function () {
 
         switch(String.fromCharCode(e.which)) {
             case 'a': // left
-                currentLevel.player.move(-1, 0);
+                currentLevel.player.move(LEFT);
                 break;
             case 'w': // up
-                currentLevel.player.move(0, -1);
+                currentLevel.player.move(UP);
                 break;
             case 'd': // right
-                currentLevel.player.move(1, 0);
+                currentLevel.player.move(RIGHT);
                 break;
             case 's': // down
-                currentLevel.player.move(0, 1);
+                currentLevel.player.move(DOWN);
                 break;
             default:
                 return;

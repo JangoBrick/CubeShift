@@ -135,6 +135,12 @@ body {
     box-shadow: 8px 8px 32px 0 rgba(0, 0, 0, 0.5), 0 0 8px 0 #000 inset;
 }
 
+.tile-moving {
+    background: #866;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
 
 
 .path {

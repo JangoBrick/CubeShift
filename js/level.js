@@ -1,4 +1,4 @@
-/*global $, $game, TILE_SIZE, Player */
+/*global $, window, $game, TILE_SIZE, Player */
 
 function Level(w, h, px, py, destx, desty) {
 
@@ -11,6 +11,25 @@ function Level(w, h, px, py, destx, desty) {
         left: destx * TILE_SIZE,
         top: desty * TILE_SIZE
     }).appendTo($e);
+
+
+
+    var tick = function () {
+
+        var loopTiles = tiles.slice(0);
+
+        for (var i=0; i<loopTiles.length; i++) {
+            var tile = loopTiles[i];
+            if (!tile)
+                continue;
+            if (tile.tileTick)
+                tile.tileTick();
+        }
+
+    };
+    var tickInterval;
+
+
 
     var level = {
 
@@ -32,28 +51,85 @@ function Level(w, h, px, py, destx, desty) {
 
 
 
+        checkBounds: function (x, y) {
+            return !isNaN(x) && !isNaN(y) && x >= 0 && y >= 0 && x < w && y < h;
+        },
+
+
+
         getTile: function (x, y) {
+            if (!this.checkBounds(x, y))
+                return undefined;
             return tiles[x * w + y];
         },
 
         setTile: function (tile) {
-            var prev = this.getTile(tile.position.x, tile.position.y);
+
+            var pos = tile.position;
+            if (!this.checkBounds(pos.x, pos.y))
+                return false;
+
+            var prev = this.getTile(pos.x, pos.y);
             if (prev) {
                 prev.remove();
             }
-            tiles[tile.position.x * w + tile.position.y] = tile;
-            tile.append($e);
+
+            tiles[pos.x * w + pos.y] = tile;
+            tile.append(this, $e);
+
+            return true;
+
+        },
+
+
+
+        updateTilePosition: function (tile, prevX, prevY) {
+
+            var prevTile = this.getTile(prevX, prevY);
+            if (prevTile !== tile)
+                return false;
+
+            var pos = tile.position;
+            if (!this.checkBounds(pos.x, pos.y))
+                return false;
+
+            tiles[prevX * w + prevY] = null;
+
+            var otherTile = tiles[pos.x * w + pos.y];
+            if (otherTile) {
+                otherTile.remove();
+            }
+            tiles[pos.x * w + pos.y] = tile;
+
+            if (!player.isFinishing && pos.x === player.position.x && pos.y === player.position.y) {
+                window.setTimeout(400, function () {
+                    if (!player.isFinishing && pos.x === player.position.x && pos.y === player.position.y) {
+                        player.die();
+                    }
+                });
+            }
+
+            return true;
+
         },
 
 
 
         show: function () {
+
             $e.appendTo($game);
             this.stats.startTime = Date.now();
+
+            if (tickInterval) {
+                window.clearInterval(tickInterval);
+            }
+            window.setInterval(tick, 1000);
+
         },
 
         hide: function () {
             $e.remove();
+            window.clearInterval(tickInterval);
         }
 
     };
