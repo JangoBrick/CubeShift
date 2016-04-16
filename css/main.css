@@ -117,7 +117,6 @@ body {
     opacity: 0;
     -webkit-transform: scale(0);
     transform: scale(0);
-    -webkit-transition: all 1s ease, opacity 0.5s ease 1s, transform 0.5s ease 1s;
     -webkit-transition: all 1s ease, opacity 0.5s ease 1s, -webkit-transform 0.5s ease 1s;
     transition: all 1s ease, opacity 0.5s ease 1s, -webkit-transform 0.5s ease 1s;
     transition: all 1s ease, opacity 0.5s ease 1s, transform 0.5s ease 1s;
@@ -271,36 +270,42 @@ body {
 
 @media (max-width: 900px), (max-height: 920px) {
     #game {
+        -webkit-transform: scale(0.9);
         transform: scale(0.9);
     }
 }
 
 @media (max-width: 760px), (max-height: 840px) {
     #game {
+        -webkit-transform: scale(0.8);
         transform: scale(0.8);
     }
 }
 
 @media (max-width: 660px), (max-height: 760px) {
     #game {
+        -webkit-transform: scale(0.7);
         transform: scale(0.7);
     }
 }
 
 @media (max-width: 580px), (max-height: 680px) {
     #game {
+        -webkit-transform: scale(0.6);
         transform: scale(0.6);
     }
 }
 
 @media (max-width: 500px), (max-height: 600px) {
     #game {
+        -webkit-transform: scale(0.5);
         transform: scale(0.5);
     }
 }
 
 @media (max-width: 440px), (max-height: 540px) {
     #game {
+        -webkit-transform: scale(0.4);
         transform: scale(0.4);
     }
 }
