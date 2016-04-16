@@ -24,6 +24,14 @@ function Level(w, h, px, py, destx, desty) {
 
 
 
+        stats: {
+            startTime: -1,
+            elapsedTime: 0,
+            moves: 0
+        },
+
+
+
         getTile: function (x, y) {
             return tiles[x * w + y];
         },
@@ -41,6 +49,7 @@ function Level(w, h, px, py, destx, desty) {
 
         show: function () {
             $e.appendTo($game);
+            this.stats.startTime = Date.now();
         },
 
         hide: function () {

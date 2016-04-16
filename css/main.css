@@ -12,6 +12,55 @@ html, body {
 
 
 
+
+
+#head {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 8px;
+    font-size: 20px;
+    line-height: 1;
+    text-align: center;
+    color: #FFF;
+    background: #111;
+    z-index: 1;
+}
+
+.head-item {
+    display: inline-block;
+    margin: 0 32px 0 0;
+    padding: 8px 0;
+}
+
+.head-item:last-child {
+    margin: 0;
+}
+
+.head-value {
+    display: inline-block;
+    position: relative;
+    width: 72px;
+    margin: 0 8px 0 8px;
+    padding: 0 8px;
+    text-align: right;
+}
+.head-value:before {
+    content: "";
+    position: absolute;
+    top: -4px;
+    bottom: -4px;
+    left: -4px;
+    right: -4px;
+    background: #333;
+    z-index: -1;
+}
+
+
+
+
+
 #game {
     display: block;
     width: 100%;
@@ -41,6 +90,7 @@ html, body {
     height: 40px;
     margin: 30px 0 0 30px;
     background: #2AF;
+    border-radius: 4px;
     box-shadow: 8px 8px 32px 0 rgba(0, 0, 0, 0.5), 0 0 8px 0 #000 inset;
     -webkit-transition: all 0.1s ease;
     transition: all 0.1s ease;
@@ -99,7 +149,7 @@ html, body {
 }
 
 .path-v {
-    height: 100px;
+    height: 102px;
 }
 
 
@@ -112,6 +162,7 @@ html, body {
     margin: 10px 0 0 10px;
     background: #333;
     border: 2px dotted #2AF;
+    border-radius: 4px;
     box-shadow: 4px 4px 16px 0 rgba(0, 0, 0, 0.5) inset;
     z-index: -1;
 }
@@ -129,7 +180,7 @@ html, body {
     min-width: 320px;
     padding: 16px;
     text-align: center;
-    background: #DDD;
+    background: #EEE;
     border-radius: 4px;
     box-shadow: 8px 8px 32px 0 rgba(0, 0, 0, 0.5);
     -webkit-transform: translate(-50%, -46%);

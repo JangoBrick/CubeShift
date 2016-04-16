@@ -41,9 +41,15 @@ function Player(level, x, y) {
 
         state: HORIZONTAL,
 
+        isFinishing: false,
+
 
 
         move: function (x, y) {
+
+            if (this.isFinishing) {
+                return;
+            }
 
             var nx = this.position.x + x,
                 ny = this.position.y + y;
@@ -83,17 +89,27 @@ function Player(level, x, y) {
             createPath(prevPos, this.position);
 
             if (nx === level.destination.x && ny == level.destination.y) {
+
+                this.isFinishing = true;
+
                 window.setTimeout(function () {
                     $e.addClass("player-final");
                     window.setTimeout(function () {
+
+                        var score = 400 / ((level.stats.elapsedTime / 4) * level.stats.moves);
+
                         showPopup("level-done", {
-                            time: "10.3s",
-                            moves: "14",
-                            score: "37"
+                            time: level.stats.elapsedTime.toFixed(1) + "s",
+                            moves: level.stats.moves,
+                            score: score.toFixed(1)
                         });
+
                     }, 1500);
                 }, 100);
+
             }
+
+            level.stats.moves++;
 
         },
 

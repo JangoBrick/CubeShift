@@ -44,6 +44,23 @@ $(function () {
 
 
 
+    var $headMoves = $("#head-moves"),
+        $headTime = $("#head-time");
+
+    window.setInterval(function () {
+
+        $headMoves.text(level.stats.moves);
+
+        if (!level.player.isFinishing) {
+            var elapsed = (Date.now() - level.stats.startTime) / 1000;
+            level.stats.elapsedTime = elapsed;
+            $headTime.text(elapsed.toFixed(1) + "s");
+        }
+
+    }, 100);
+
+
+
 
 
     $document.keydown(function(e) {
