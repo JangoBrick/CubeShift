@@ -232,6 +232,10 @@ a:focus {
     opacity: 1;
 }
 
+#popup-intro {
+    display: block;
+}
+
 .popup-title {
     display: block;
     margin: 0 0 16px 0;

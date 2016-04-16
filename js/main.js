@@ -180,6 +180,7 @@ $(function () {
         if (currentLevel) {
             currentLevel.hide();
         }
+        $game.hide().fadeIn(200);
 
         currentLevel = level;
         currentLevelIndex = index;
@@ -188,8 +189,6 @@ $(function () {
         hidePopup();
 
     };
-
-    startLevel(0);
 
 
 
