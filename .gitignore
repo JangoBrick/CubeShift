@@ -1,1 +1,4 @@
 *.min.*
+
+fontello-*.css
+fontello/css/animation.css

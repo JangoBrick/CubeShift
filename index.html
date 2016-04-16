@@ -4,19 +4,20 @@
         <meta charset="utf-8" />
         <title>Shapeshift // JangoBrick</title>
         <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+        <link rel="stylesheet" href="fontello/css/fontello.css" />
         <link rel="stylesheet" href="css/main.css" />
     </head>
     <body>
 
         <div id="head">
             <div class="head-item">
-                Moves: <span class="head-value" id="head-moves">0</span>
+                <i class="icon-moves"></i> <span class="head-value" id="head-moves">0</span>
             </div>
             <div class="head-item">
-                Time: <span class="head-value" id="head-time">0s</span>
+                <i class="icon-time"></i> <span class="head-value" id="head-time">0s</span>
             </div>
             <div class="head-item">
-                <input type="checkbox" id="head-music" checked /> Music
+                <input type="checkbox" id="head-music" checked /> <i class="icon-music"></i>
             </div>
         </div>
 
@@ -32,22 +33,22 @@
             <div class="popup-content">
                 <div class="popup-table">
                     <div class="popup-entry">
-                        <span class="popup-key">Time:</span>
+                        <span class="popup-key"><i class="icon-time"></i> Time:</span>
                         <span class="popup-value" id="popup-level-done-time"></span>
                     </div>
                     <div class="popup-entry">
-                        <span class="popup-key">Moves:</span>
+                        <span class="popup-key"><i class="icon-moves"></i> Moves:</span>
                         <span class="popup-value" id="popup-level-done-moves"></span>
                     </div>
                     <div class="popup-entry">
-                        <span class="popup-key">Score:</span>
+                        <span class="popup-key"><i class="icon-score"></i> Score:</span>
                         <span class="popup-value" id="popup-level-done-score"></span>
                     </div>
                 </div>
             </div>
             <div class="popup-actions">
-                <button class="popup-action" type="button" onclick="replayLevel()">Replay</button>
-                <button class="popup-action" type="button" onclick="nextLevel()">Next</button>
+                <button class="popup-action" type="button" onclick="replayLevel()"><i class="icon-repeat"></i> Replay</button>
+                <button class="popup-action" type="button" onclick="nextLevel()">Next <i class="icon-next"></i></button>
             </div>
         </div>
 
@@ -57,7 +58,7 @@
             <div class="popup-content">
                 <div class="popup-table">
                     <div class="popup-entry">
-                        <span class="popup-key">Total score:</span>
+                        <span class="popup-key"><i class="icon-score"></i> Total score:</span>
                         <span class="popup-value" id="popup-completed-score"></span>
                     </div>
                 </div>
@@ -75,7 +76,7 @@
                 doesn't that hurt?
             </div>
             <div class="popup-actions">
-                <button class="popup-action" type="button" onclick="replayLevel()">Try again</button>
+                <button class="popup-action" type="button" onclick="replayLevel()"><i class="icon-repeat"></i> Try again</button>
             </div>
         </div>
 
