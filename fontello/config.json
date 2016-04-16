@@ -41,6 +41,18 @@
       "css": "music",
       "code": 59397,
       "src": "elusive"
+    },
+    {
+      "uid": "63493102fc6b827e4a7be30b13cbf3b4",
+      "css": "horizontal",
+      "code": 59398,
+      "src": "iconic"
+    },
+    {
+      "uid": "7dde84b4f180e3c07523faecda81caa6",
+      "css": "vertical",
+      "code": 59399,
+      "src": "iconic"
     }
   ]
 }

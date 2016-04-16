@@ -160,12 +160,16 @@ a:focus {
     width: 80px;
     height: 80px;
     margin: 10px 0 0 10px;
+    font-size: 24px;
+    line-height: 80px;
+    text-align: center;
+    color: #FFF;
     background: #666;
     box-shadow: 8px 8px 32px 0 rgba(0, 0, 0, 0.5), 0 0 8px 0 #000 inset;
 }
 
 .tile-moving {
-    background: #866;
+    background: #A66;
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease, opacity 0.15s ease;
 }

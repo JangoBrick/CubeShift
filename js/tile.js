@@ -59,10 +59,13 @@ function MovingTile(x, y, direction) {
             return;
     }
 
+    var horizontal = direction === LEFT || direction === RIGHT;
     var $e = $("<div/>").addClass("tile tile-moving").css({
         left: x * TILE_SIZE,
         top: y * TILE_SIZE
-    });
+    }).append(
+        $("<i/>").addClass("icon-" + (horizontal ? "horizontal" : "vertical"))
+    );
 
     var state = false;
 
