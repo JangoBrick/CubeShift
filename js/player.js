@@ -1,4 +1,4 @@
-/*global window, $, HORIZONTAL, VERTICAL, showPopup, TILE_SIZE */
+/*global window, $, HORIZONTAL, VERTICAL, showPopup, TILE_SIZE, setLevelScore, currentLevelIndex */
 
 function Player(level, x, y) {
 
@@ -103,6 +103,8 @@ function Player(level, x, y) {
                             moves: level.stats.moves,
                             score: score.toFixed(1)
                         });
+
+                        setLevelScore(currentLevelIndex, score);
 
                     }, 1500);
                 }, 100);

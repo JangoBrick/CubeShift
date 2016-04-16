@@ -38,8 +38,23 @@
                 </div>
             </div>
             <div class="popup-actions">
-                <button class="popup-action" type="button">Replay</button>
-                <button class="popup-action" type="button">Next</button>
+                <button class="popup-action" type="button" onclick="replayLevel()">Replay</button>
+                <button class="popup-action" type="button" onclick="nextLevel()">Next</button>
+            </div>
+        </div>
+
+        <div class="popup" id="popup-completed">
+            <h2 class="popup-title">Game completed!</h2>
+            <div class="popup-content">
+                <div class="popup-table">
+                    <div class="popup-entry">
+                        <span class="popup-key">Total score:</span>
+                        <span class="popup-value" id="popup-completed-score"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="popup-actions">
+                <button class="popup-action" type="button" onclick="startLevel(0)">Play again</button>
             </div>
         </div>
 
