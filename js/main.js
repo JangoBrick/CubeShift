@@ -3,6 +3,7 @@
 var HORIZONTAL = true,
     VERTICAL = false;
 var $game;
+var showPopup;
 
 
 
@@ -14,7 +15,25 @@ $(function () {
 
 
 
-    var level = Level(8, 8, 2, 2);
+    showPopup = function (id, properties) {
+
+        var $popup = $("#popup-" + id);
+
+        $.each(properties, function (k, v) {
+            var $field = $("#popup-" + id + "-" + k);
+            $field.html(v);
+        });
+
+        $popup.show().css("opacity", 0);
+        window.setTimeout(function () {
+            $popup.css("opacity", "").addClass("popup-visible");
+        }, 50);
+
+    };
+
+
+
+    var level = Level(8, 8, 2, 2, 6, 6);
     {
         level.setTile(Tile(1, 1));
         level.setTile(Tile(2, 6));

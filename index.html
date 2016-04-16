@@ -3,11 +3,38 @@
     <head>
         <meta charset="utf-8" />
         <title>Shapeshift // JangoBrick</title>
+        <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
         <link rel="stylesheet" href="css/main.css" />
     </head>
     <body>
 
         <div id="game"></div>
+
+        <div class="popup" id="popup-level-done">
+            <h2 class="popup-title">Level done!</h2>
+            <div class="popup-content">
+                <div class="popup-table">
+                    <div class="popup-entry">
+                        <span class="popup-key">Time:</span>
+                        <span class="popup-value" id="popup-level-done-time"></span>
+                    </div>
+                    <div class="popup-entry">
+                        <span class="popup-key">Moves:</span>
+                        <span class="popup-value" id="popup-level-done-moves"></span>
+                    </div>
+                    <div class="popup-entry">
+                        <span class="popup-key">Score:</span>
+                        <span class="popup-value" id="popup-level-done-score"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="popup-actions">
+                <button class="popup-action" type="button">Replay</button>
+                <button class="popup-action" type="button">Next</button>
+            </div>
+        </div>
+
+
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 

@@ -1,4 +1,4 @@
-/*global $, HORIZONTAL, VERTICAL */
+/*global window, $, HORIZONTAL, VERTICAL, showPopup */
 
 function Player(level, x, y) {
 
@@ -81,6 +81,19 @@ function Player(level, x, y) {
             });
 
             createPath(prevPos, this.position);
+
+            if (nx === level.destination.x && ny == level.destination.y) {
+                window.setTimeout(function () {
+                    $e.addClass("player-final");
+                    window.setTimeout(function () {
+                        showPopup("level-done", {
+                            time: "10.3s",
+                            moves: "14",
+                            score: "37"
+                        });
+                    }, 1500);
+                }, 100);
+            }
 
         },
 
