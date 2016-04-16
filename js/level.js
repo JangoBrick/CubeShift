@@ -102,11 +102,11 @@ function Level(w, h, px, py, destx, desty) {
             tiles[pos.x * w + pos.y] = tile;
 
             if (!player.isFinishing && pos.x === player.position.x && pos.y === player.position.y) {
-                window.setTimeout(400, function () {
+                window.setTimeout(function () {
                     if (!player.isFinishing && pos.x === player.position.x && pos.y === player.position.y) {
                         player.die();
                     }
-                });
+                }, 400);
             }
 
             return true;
