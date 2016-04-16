@@ -1,4 +1,4 @@
-/*global $, window, $game, TILE_SIZE, Player */
+/*global $, window, $game, TILE_SIZE, Player, DEATH_CRUSHED, DEATH_STUCK, HORIZONTAL, VERTICAL */
 
 function Level(w, h, px, py, destx, desty) {
 
@@ -24,6 +24,29 @@ function Level(w, h, px, py, destx, desty) {
                 continue;
             if (tile.tileTick)
                 tile.tileTick();
+        }
+
+
+
+        if (!player.isFinishing) {
+
+            var canMove = false,
+                ppos = player.position;
+
+            if (player.state === HORIZONTAL) {
+                var left = level.getTile(ppos.x - 1, ppos.y),
+                    right = level.getTile(ppos.x + 1, ppos.y);
+                canMove = !left || left.isMoving || !right || right.isMoving;
+            } else {
+                var top = level.getTile(ppos.x, ppos.y - 1),
+                    bottom = level.getTile(ppos.x, ppos.y + 1);
+                canMove = !top || top.isMoving || !bottom || bottom.isMoving;
+            }
+
+            if (!canMove) {
+                player.die(DEATH_STUCK);
+            }
+
         }
 
     };
@@ -104,7 +127,7 @@ function Level(w, h, px, py, destx, desty) {
             if (!player.isFinishing && pos.x === player.position.x && pos.y === player.position.y) {
                 window.setTimeout(function () {
                     if (!player.isFinishing && pos.x === player.position.x && pos.y === player.position.y) {
-                        player.die();
+                        player.die(DEATH_CRUSHED);
                     }
                 }, 400);
             }

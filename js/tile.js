@@ -16,6 +16,8 @@ function Tile(x, y) {
             y: y
         },
 
+        isMoving: false,
+
 
 
         append: function (level, $container) {
@@ -72,6 +74,8 @@ function MovingTile(x, y, direction) {
             x: x,
             y: y
         },
+
+        isMoving: true,
 
 
 

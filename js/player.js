@@ -1,5 +1,10 @@
 /*global window, $, HORIZONTAL, VERTICAL, LEFT, RIGHT, UP, DOWN, showPopup, TILE_SIZE, setLevelScore, currentLevelIndex */
 
+var DEATH_CRUSHED = 0,
+    DEATH_STUCK = 1;
+
+
+
 function Player(level, x, y) {
 
     var $e = $("<div/>").addClass("player player-h").css({
@@ -165,14 +170,21 @@ function Player(level, x, y) {
 
 
 
-        die: function () {
+        die: function (cause) {
 
             this.isFinishing = true;
             var _this = this;
 
             $e.fadeOut(400);
 
-            showPopup("dead", {});
+            var popup;
+            if (cause === DEATH_STUCK) {
+                popup = "stuck";
+            } else {
+                popup = "dead";
+            }
+
+            showPopup(popup, {});
 
         }
 
