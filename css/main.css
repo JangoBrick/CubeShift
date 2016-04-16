@@ -18,8 +18,20 @@ body {
 
 
 
+a {
+    display: inline-block;
+    color: #2AF;
+    text-decoration: none;
+}
+a:hover,
+a:focus {
+    text-decoration: underline;
+}
 
-#head {
+
+
+
+#header {
     position: absolute;
     top: 0;
     left: 0;
@@ -33,17 +45,17 @@ body {
     z-index: 1;
 }
 
-.head-item {
+.header-item {
     display: inline-block;
     margin: 0 32px 0 0;
     padding: 8px 0;
 }
 
-.head-item:last-child {
+.header-item:last-child {
     margin: 0;
 }
 
-.head-value {
+.header-value {
     display: inline-block;
     position: relative;
     width: 72px;
@@ -51,7 +63,7 @@ body {
     padding: 0 8px;
     text-align: right;
 }
-.head-value:before {
+.header-value:before {
     content: "";
     position: absolute;
     top: -4px;
@@ -60,6 +72,22 @@ body {
     right: -4px;
     background: #333;
     z-index: -1;
+}
+
+
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+    line-height: 1;
+    text-align: center;
+    color: #FFF;
+    background: #111;
+    z-index: 1;
 }
 
 
