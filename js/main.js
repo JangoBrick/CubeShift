@@ -247,16 +247,34 @@ $(function () {
 
 
     var $headMusic = $("#head-music"),
-        $music = $("#music");
+        $music = $("#music"),
+        music = $music.get(0);
 
     $headMusic.on("change", function (event) {
 
-        if ($headMusic.is(":checked")) {
+        if (typeof music.play !== "function")
+            return;
+
+        var play = $headMusic.is(":checked");
+
+        if (play) {
             $music.get(0).play();
         } else {
             $music.get(0).pause();
         }
 
+        window.localStorage.setItem("jangobrick.ld35.music", play ? "yes" : "no");
+
     });
+
+    if (window.localStorage.getItem("jangobrick.ld35.music") === "no") {
+
+        if (typeof music.pause !== "function")
+            return;
+
+        $headMusic.prop("checked", false);
+        $music.get(0).pause();
+
+    }
 
 });
