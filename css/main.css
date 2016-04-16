@@ -38,7 +38,7 @@ html, body {
     display: block;
     width: 40px;
     height: 40px;
-    margin: 20px 0 0 20px;
+    margin: 30px 0 0 30px;
     background: #2AF;
     box-shadow: 8px 8px 32px rgba(0, 0, 0, 0.5), 0 0 8px 0 #000 inset;
     -webkit-transition: all 0.1s ease;
@@ -47,12 +47,12 @@ html, body {
 
 .player-h {
     width: 80px;
-    margin-left: 0;
+    margin-left: 10px;
 }
 
 .player-v {
     height: 80px;
-    margin-top: 0;
+    margin-top: 10px;
 }
 
 
@@ -62,6 +62,27 @@ html, body {
     display: block;
     width: 80px;
     height: 80px;
+    margin: 10px 0 0 10px;
     background: #666;
     box-shadow: 8px 8px 32px rgba(0, 0, 0, 0.5), 0 0 8px 0 #000 inset;
+}
+
+
+
+.path {
+    position: absolute;
+    display: block;
+    width: 2px;
+    height: 2px;
+    margin: 49px 0 0 49px;
+    background: #46B;
+    z-index: -1;
+}
+
+.path-h {
+    width: 102px;
+}
+
+.path-v {
+    height: 100px;
 }

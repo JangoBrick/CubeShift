@@ -7,11 +7,36 @@ function Player(level, x, y) {
         top: y * 100
     });
 
+    var prevPos = {
+        x: x,
+        y: y
+    };
+
+    var createPath = function (from, to) {
+        var startX = Math.min(from.x, to.x),
+            endX = Math.max(from.x, to.x);
+        var startY = Math.min(from.y, to.y),
+            endY = Math.max(from.y, to.y);
+        if (startX === endX && startY === endY)
+            return;
+        // TODO support for paths > 1
+        var $path = $("<div/>").addClass("path").css({
+            left: startX * 100,
+            top: startY * 100
+        });
+        if (startX !== endX) {
+            $path.addClass("path-h");
+        } else {
+            $path.addClass("path-v");
+        }
+        $e.parent().append($path.fadeIn(400));
+    };
+
     return {
 
         position: {
-            x: 2,
-            y: 2
+            x: x,
+            y: x
         },
 
         state: HORIZONTAL,
@@ -44,6 +69,9 @@ function Player(level, x, y) {
                 $e.removeClass("player-v").addClass("player-h");
             }
 
+            prevPos.x = this.position.x;
+            prevPos.y = this.position.y;
+
             this.position.x = nx;
             this.position.y = ny;
 
@@ -51,6 +79,8 @@ function Player(level, x, y) {
                 left: nx * 100,
                 top: ny * 100
             });
+
+            createPath(prevPos, this.position);
 
         },
 
