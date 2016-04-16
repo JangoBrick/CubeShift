@@ -228,6 +228,8 @@ $(function () {
 
 
 
+    var touchX = null, touchY = null;
+
     $document.keydown(function(e) {
 
         switch(e.which) {
@@ -270,6 +272,38 @@ $(function () {
         }
 
         // prevent scrolling
+        e.preventDefault();
+
+    }).on("touchstart", function (e) {
+
+        touchX = e.originalEvent.touches[0].clientX;
+        touchY = e.originalEvent.touches[0].clientY;
+
+    }).on("touchmove", function (e){
+
+        var tx = e.originalEvent.touches[0].clientX,
+            ty = e.originalEvent.touches[0].clientY;
+
+        if (touchX !== null && touchY !== null) {
+
+            var dx = tx - touchX,
+                dy = ty - touchY;
+
+            if (Math.abs(dx) > 60 || Math.abs(dy) > 60) {
+
+                if (Math.abs(dx) > Math.abs(dy)) {
+                    currentLevel.player.move(dx < 0 ? LEFT : RIGHT);
+                } else {
+                    currentLevel.player.move(dy < 0 ? UP : DOWN);
+                }
+
+                touchX = null;
+                touchY = null;
+
+            }
+
+        }
+
         e.preventDefault();
 
     });

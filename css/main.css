@@ -47,7 +47,7 @@ a:focus {
 
 .header-item {
     display: inline-block;
-    margin: 0 32px 0 0;
+    margin: 0 8px 0 0;
     padding: 8px 0;
 }
 
@@ -288,13 +288,13 @@ a:focus {
 .popup-key {
     display: table-cell;
     text-align: left;
-    width: 50%;
+    width: 75%;
     padding: 8px 16px;
 }
 
 .popup-value {
     display: table-cell;
-    width: 50%;
+    width: 25%;
     padding: 8px 16px;
     text-align: right;
 }
