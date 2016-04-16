@@ -244,4 +244,19 @@ $(function () {
 
     });
 
+
+
+    var $headMusic = $("#head-music"),
+        $music = $("#music");
+
+    $headMusic.on("change", function (event) {
+
+        if ($headMusic.is(":checked")) {
+            $music.get(0).play();
+        } else {
+            $music.get(0).pause();
+        }
+
+    });
+
 });
