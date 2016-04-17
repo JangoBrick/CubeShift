@@ -83,7 +83,43 @@ $(function () {
     ];
     levelCount = levelDefs.length;
 
+
+
     var scores = [];
+
+    var saveScores = function () {
+
+        var s = "";
+
+        for (var i=0; i<scores.length; i++) {
+            if (i > 0) {
+                s += "|";
+            }
+            if (scores[i]) {
+                s += scores[i].toFixed(1);
+            } else {
+                s += "-";
+            }
+        }
+
+        window.localStorage.setItem("jangobrick.ld35.scores", s);
+
+    };
+
+    var scoresString = window.localStorage.getItem("jangobrick.ld35.scores");
+    if (scoresString) {
+
+        var scoresStringSpl = scoresString.split("|");
+
+        for (var i=0; i<scoresStringSpl.length; i++) {
+            if (scoresStringSpl[i] === "-") {
+                scores[i] = undefined;
+            } else {
+                scores[i] = parseFloat(scoresStringSpl[i]);
+            }
+        }
+
+    }
 
 
 
@@ -110,7 +146,7 @@ $(function () {
 
             var startThisLevel = function () {
                 var index = $(this).data("level-index");
-                if (index == 0 || scores[index] || (index > 0 && scores[index - 1])) {
+                if (index === 0 || scores[index] || (index > 0 && scores[index - 1])) {
                     startLevel(index);
                 }
             };
@@ -244,6 +280,7 @@ $(function () {
 
     setLevelScore = function (levelIndex, score) {
         scores[levelIndex] = score;
+        saveScores();
     };
 
 
