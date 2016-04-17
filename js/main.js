@@ -1,7 +1,6 @@
-/*global jQuery, $, window, document, console, Level, Player, Tile, MovingTile */
+/*global jQuery, $, window, document, console, Level, Player, Tile, MovingTile, SlidingTile */
 
-var HORIZONTAL = true,
-    VERTICAL = false;
+var HORIZONTAL = true, VERTICAL = false;
 var LEFT = 0, RIGHT = 1, UP = 2, DOWN = 3;
 
 var $game;
@@ -243,6 +242,12 @@ $(function () {
                 } else if (tile === "v") {
                     // down-moving tile
                     tiles.push(new MovingTile(x, y, DOWN));
+                } else if (tile === "-") {
+                    // horizontally sliding tile
+                    tiles.push(new SlidingTile(x, y, HORIZONTAL));
+                } else if (tile === "|") {
+                    // vertically sliding tile
+                    tiles.push(new SlidingTile(x, y, VERTICAL));
                 }
 
             }
@@ -359,6 +364,10 @@ $(function () {
         touchY = e.originalEvent.touches[0].clientY;
 
     }).on("touchmove", function (e){
+
+        if (!currentLevel || currentLevel.player.isFinishing) {
+            return;
+        }
 
         var tx = e.originalEvent.touches[0].clientX,
             ty = e.originalEvent.touches[0].clientY;

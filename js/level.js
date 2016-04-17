@@ -14,6 +14,8 @@ function Level(w, h, px, py, destx, desty) {
 
 
 
+    var tickId = 0;
+
     var tick = function () {
 
         var loopTiles = tiles.slice(0);
@@ -23,7 +25,7 @@ function Level(w, h, px, py, destx, desty) {
             if (!tile)
                 continue;
             if (tile.tileTick)
-                tile.tileTick();
+                tile.tileTick(tickId);
         }
 
 
@@ -48,6 +50,10 @@ function Level(w, h, px, py, destx, desty) {
             }
 
         }
+
+
+
+        tickId++;
 
     };
     var tickInterval;
@@ -146,7 +152,8 @@ function Level(w, h, px, py, destx, desty) {
             if (tickInterval) {
                 window.clearInterval(tickInterval);
             }
-            window.setInterval(tick, 1000);
+            /* 128 bpm - rhythm of the music */
+            window.setInterval(tick, 60 / 128 * 1000);
 
         },
 
