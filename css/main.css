@@ -321,8 +321,11 @@ a:focus {
 
 #popup-levels-list {
     display: block;
-    width: 280px;
+    min-width: 280px;
+    max-width: 300px;
+    max-height: 260px;
     font-size: 0;
+    overflow-y: auto;
 }
 
 .popup-level {
@@ -334,7 +337,8 @@ a:focus {
     transform: translateY(0);
     transition: all 0.2s ease;
 }
-.popup-level:nth-child(3n) {
+.popup-level:nth-child(3n),
+.popup-level:last-child {
     margin-right: 0;
 }
 .popup-level-playable:hover {
