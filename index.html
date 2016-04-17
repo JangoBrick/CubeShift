@@ -45,6 +45,15 @@
             </div>
             <div class="popup-actions">
                 <button class="popup-action" type="button" onclick="startLevel(0)">Start game</button>
+                <button class="popup-action" type="button" onclick="showPopup('levels', {})">Select level</button>
+            </div>
+        </div>
+
+        <!-- POPUP: LEVEL SELECTION -->
+        <div class="popup" id="popup-levels">
+            <h1 class="popup-title">Select a level</h1>
+            <div class="popup-content">
+                <div id="popup-levels-list"></div>
             </div>
         </div>
 
@@ -68,7 +77,8 @@
                 </div>
             </div>
             <div class="popup-actions">
-                <button class="popup-action" type="button" onclick="replayLevel()"><i class="icon-repeat"></i> Replay</button>
+                <button class="popup-action popup-action-small" type="button" onclick="replayLevel()"><i class="icon-repeat"></i></button>
+                <button class="popup-action popup-action-small" type="button" onclick="showPopup('levels', {})"><i class="icon-levels"></i></button>
                 <button class="popup-action" type="button" onclick="nextLevel()">Next <i class="icon-next"></i></button>
             </div>
         </div>
@@ -86,6 +96,7 @@
             </div>
             <div class="popup-actions">
                 <button class="popup-action" type="button" onclick="startLevel(0)">Play again</button>
+                <button class="popup-action" type="button" onclick="showPopup('levels', {})">Select level</button>
             </div>
         </div>
 

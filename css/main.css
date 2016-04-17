@@ -283,6 +283,10 @@ a:focus {
     -webkit-transform: translateY(-2px);
     transform: translateY(-2px);
 }
+.popup-action-small {
+    min-width: auto;
+    padding: 8px;
+}
 
 .popup-table {
     display: table;
@@ -305,6 +309,44 @@ a:focus {
     width: 25%;
     padding: 8px 16px;
     text-align: right;
+}
+
+
+
+#popup-levels-list {
+    display: block;
+    width: 280px;
+    font-size: 0;
+}
+
+.popup-level {
+    display: inline-block;
+    width: 80px;
+    margin: 0 20px 20px 0;
+    box-shadow: 0 0 3px 0 transparent;
+    cursor: default;
+    transform: translateY(0);
+    transition: all 0.2s ease;
+}
+.popup-level:nth-child(3n) {
+    margin-right: 0;
+}
+.popup-level-playable:hover {
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+    transform: translateY(-2px);
+    cursor: pointer;
+}
+
+.popup-level-img {
+    display: block;
+    width: 100%;
+}
+
+.popup-level-score {
+    display: block;
+    font-size: 16px;
+    height: 1.5em;
+    line-height: 1.5em;
 }
 
 

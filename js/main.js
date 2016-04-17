@@ -104,6 +104,45 @@ $(function () {
             $field.html(v);
         });
 
+        if (id === "levels") {
+
+            var $list = $("#popup-levels-list").empty();
+
+            var startThisLevel = function () {
+                var index = $(this).data("level-index");
+                if (index == 0 || scores[index] || (index > 0 && scores[index - 1])) {
+                    startLevel(index);
+                }
+            };
+
+            var lastPlayed = -1;
+            for (var i=0; i<levelDefs.length; i++) {
+
+                var score = scores[i] ? scores[i].toFixed(1) : null;
+                if (score) {
+                    lastPlayed = i;
+                }
+                var playable = score || lastPlayed + 1 >= i;
+
+                $list.append(
+                    $("<div/>").addClass("popup-level" + (playable ? " popup-level-playable" : "")).append(
+                        $("<img/>").addClass("popup-level-img").attr({
+                            src: playable ? ("img/level" + i + ".png") : "img/levelunknown.png",
+                            alt: "Picture of level #" + (i+1)
+                        })
+                    ).append(
+                        $("<div/>").addClass("popup-level-score").append(
+                            score ? $("<i/>").addClass("icon-score") : ""
+                        ).append(
+                            score ? score : (playable ? "Play!" : "Locked")
+                        )
+                    ).data("level-index", i).on("click", startThisLevel)
+                );
+
+            }
+
+        }
+
         $popup.show().css("opacity", 0);
         window.setTimeout(function () {
             $popup.css("opacity", "").addClass("popup-visible");
@@ -213,6 +252,9 @@ $(function () {
         $headerTime = $("#header-time");
 
     window.setInterval(function () {
+
+        if (!currentLevel)
+            return;
 
         $headerMoves.text(currentLevel.stats.moves);
 
