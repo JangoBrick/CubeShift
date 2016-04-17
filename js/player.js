@@ -1,4 +1,4 @@
-/*global window, $, HORIZONTAL, VERTICAL, LEFT, RIGHT, UP, DOWN, showPopup, TILE_SIZE, setLevelScore, currentLevelIndex */
+/*global window, $, HORIZONTAL, VERTICAL, LEFT, RIGHT, UP, DOWN, showPopup, TILE_SIZE, setLevelScore, currentLevelIndex, levelCount */
 
 var DEATH_CRUSHED = 0,
     DEATH_STUCK = 1;
@@ -134,7 +134,9 @@ function Player(level, x, y) {
                         showPopup("level-done", {
                             time: level.stats.elapsedTime.toFixed(1) + "s",
                             moves: level.stats.moves,
-                            score: score.toFixed(1)
+                            score: score.toFixed(1),
+                            level: currentLevelIndex + 1,
+                            count: levelCount
                         });
 
                         setLevelScore(currentLevelIndex, score);

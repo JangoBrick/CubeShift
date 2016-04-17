@@ -50,7 +50,7 @@
 
         <!-- POPUP: LEVEL COMPLETED -->
         <div class="popup" id="popup-level-done">
-            <h2 class="popup-title">Level done!</h2>
+            <h2 class="popup-title">Level <span id="popup-level-done-level"></span>/<span id="popup-level-done-count"></span> done!</h2>
             <div class="popup-content">
                 <div class="popup-table">
                     <div class="popup-entry">
@@ -93,8 +93,14 @@
         <div class="popup" id="popup-dead">
             <h2 class="popup-title">You died!</h2>
             <div class="popup-content">
-                Why did you let yourself get crushed,<br />
-                doesn't that hurt?
+                <p>
+                    Why did you let yourself get crushed,<br />
+                    doesn't that hurt?
+                </p>
+                <p>
+                    Remember: go through them<br />
+                    while they move!
+                </p>
             </div>
             <div class="popup-actions">
                 <button class="popup-action" type="button" onclick="replayLevel()"><i class="icon-repeat"></i> Try again</button>

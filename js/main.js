@@ -10,7 +10,7 @@ var showPopup, hidePopup;
 var TILE_SIZE = 100;
 
 var startLevel;
-var currentLevelIndex = 0, currentLevel = null;
+var currentLevelIndex = 0, currentLevel = null, levelCount;
 var replayLevel, nextLevel;
 
 var setLevelScore;
@@ -81,6 +81,7 @@ $(function () {
             "..o.....",
         ]
     ];
+    levelCount = levelDefs.length;
 
     var scores = [];
 
