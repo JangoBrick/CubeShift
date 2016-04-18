@@ -81,7 +81,7 @@ a:focus {
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 16px;
+    padding: 16px 0;
     font-size: 16px;
     line-height: 1;
     text-align: center;
@@ -170,13 +170,13 @@ a:focus {
 
 .tile-moving {
     background: #A66;
-    -webkit-transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease, opacity 0.15s ease;
     transition: all 0.5s ease, opacity 0.15s ease;
 }
 
 .tile-sliding {
     background: #C86;
-    -webkit-transition: all 0.5s ease;
+    -webkit-transition: all 0.25s ease, opacity 0.1s ease;
     transition: all 0.25s ease, opacity 0.1s ease;
 }
 
@@ -290,7 +290,7 @@ a:focus {
     transform: translateY(-2px);
 }
 .popup-action-small {
-    min-width: auto;
+    min-width: 0;
     padding: 8px;
 }
 
@@ -334,7 +334,9 @@ a:focus {
     margin: 0 20px 20px 0;
     box-shadow: 0 0 3px 0 transparent;
     cursor: default;
+    -webkit-transform: translateY(0);
     transform: translateY(0);
+    -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
 }
 .popup-level:nth-child(3n),
@@ -343,6 +345,7 @@ a:focus {
 }
 .popup-level-playable:hover {
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+    -webkit-transform: translateY(-2px);
     transform: translateY(-2px);
     cursor: pointer;
 }
@@ -403,4 +406,32 @@ a:focus {
         -webkit-transform: scale(0.4);
         transform: scale(0.4);
     }
+}
+
+
+
+
+
+@media (max-width: 520px) {
+
+    #header {
+        font-size: 16px;
+    }
+
+    .header-value {
+        width: 48px;
+        padding: 0;
+    }
+
+
+
+    .popup {
+        padding: 0 16px;
+    }
+
+    .popup-action {
+        min-width: 0;
+        padding: 8px;
+    }
+
 }
