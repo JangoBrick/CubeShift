@@ -141,11 +141,11 @@ $(function () {
             }
         }
 
-        window.localStorage.setItem("jangobrick.ld35.scores", s);
+        window.localStorage.setItem("net.meyfa.ld35.scores", s);
 
     };
 
-    var scoresString = window.localStorage.getItem("jangobrick.ld35.scores");
+    var scoresString = window.localStorage.getItem("net.meyfa.ld35.scores");
     if (scoresString) {
 
         var scoresStringSpl = scoresString.split("|");
@@ -455,11 +455,11 @@ $(function () {
             $music.get(0).pause();
         }
 
-        window.localStorage.setItem("jangobrick.ld35.music", play ? "yes" : "no");
+        window.localStorage.setItem("net.meyfa.ld35.music", play ? "yes" : "no");
 
     });
 
-    if (window.localStorage.getItem("jangobrick.ld35.music") === "no") {
+    if (window.localStorage.getItem("net.meyfa.ld35.music") === "no") {
 
         if (typeof music.pause !== "function")
             return;
